@@ -58,7 +58,7 @@ Reports are basically views with custom methods and properties.
             """
             The filename can be generated dynamically and translated
             """
-            return _('Users-report-%(count)s.pdf') % self.get_users().count()
+            return _('Users-report-%(count)s.pdf') % {'count': self.get_users().count() }
 
         def get_context_data(self):
             """
