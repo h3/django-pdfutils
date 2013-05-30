@@ -82,6 +82,8 @@ Overriding default CSS
 Since the default CSS (base.css, portrait.css, landscape.css) are normal static files, they can be overrided 
 from any other django app which has a `pdfutils` folder in their static folder.
 
+Note: Be sure your applications are listed in the right order in `INSTALLED_APPS` !
+
 
 Dependencies
 ------------
