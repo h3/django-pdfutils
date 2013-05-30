@@ -1,4 +1,4 @@
-django-seoutils
+django-pdfutils
 ===============
 
 A simple django app to generate PDF documents.
