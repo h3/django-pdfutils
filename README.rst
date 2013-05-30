@@ -75,6 +75,33 @@ The slug should obviously be unique since it is used to build the report URL.
 
 For example, with the default settings and URLs, the URL for report above would be `/reports/users-report/`.
 
+Example template
+----------------
+
+.. code-block:: html
+
+    <html>
+        <head>
+            {{ STYLES|safe }}
+        </head>
+        <body class="{% if landscape %}landscape{% else %}portrait{% endif %}">
+            <ul>
+                {% for user in user_list %}
+                <li>{{ user }}</li>
+                {% endif %}
+            </ul>
+        </body>
+    </html>
+
+Some template variables are injected by default in reports:
+
+* title
+* slug
+* orientation
+* MEDIA_URL
+* STATIC_URL
+* STYLES
+
 
 Overriding default CSS
 ----------------------
