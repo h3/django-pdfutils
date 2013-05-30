@@ -1,0 +1,19 @@
+@page {
+    size: letter landscape;
+    margin: 2.5cm 1cm;
+    @frame header {
+        -pdf-frame-content: header;
+        top: 0.5cm;
+        left: 1cm;
+        right: 1cm;
+        height: 2cm;
+    }
+
+    @frame footer {
+        -pdf-frame-content: footer;
+        bottom: 1.5cm;
+        margin-left: 1cm;
+        margin-right: 1cm;
+        height: 1.5cm;
+    }
+}
