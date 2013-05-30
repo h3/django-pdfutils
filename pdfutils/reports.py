@@ -16,9 +16,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views.generic import View
 
-from django_xhtml2pdf.utils import generate_pdf
-
-from pdfutils.utils import memoize
+from pdfutils.utils import memoize, generate_pdf
 
 
 class ReportBase(View):
