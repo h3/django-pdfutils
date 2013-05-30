@@ -8,11 +8,10 @@ Installation
 ------------
 
 1. In your `settings.py`, add `pdfutils` to your `INSTALLED_APPS`.
-   
 2. `(r'^reports/', include(pdfutils.site.urls)),` to your `urls.py`
-2. Create a `report.py` file in any installed django application.
-3. Create your report(s)
-4. Profit!
+3. Create a `report.py` file in any installed django application.
+4. Create your report(s)
+5. Profit!
 
 
 Example report
