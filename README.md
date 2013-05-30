@@ -1,4 +1,0 @@
-django-pdfutils
-===============
-
-PDF utils
