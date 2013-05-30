@@ -19,7 +19,7 @@ Example report
 
 Reports are basically views with custom methods and properties.
 
-.. code-block:: django
+.. code-block:: python
 
     # -*- coding: utf-8 -*-
 
