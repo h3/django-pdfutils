@@ -39,7 +39,6 @@ class ReportBase(View):
             'orientation': self.orientation,
             'MEDIA_URL': settings.MEDIA_URL,
             'STATIC_URL': settings.STATIC_URL,
-            'THUMBNAIL_MEDIA_URL': settings.THUMBNAIL_MEDIA_URL,
             'STYLES': self.render_styles(),
         })
 
