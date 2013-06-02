@@ -18,7 +18,6 @@ setup(
     install_requires = [
         'django>=1.4,<1.5.99',
         'decorator==3.4.0,<=3.9.9',
-        'PIL==1.1.7',
         'reportlab==2.5',
         'html5lib==0.90',
         'httplib2==0.7.4',
