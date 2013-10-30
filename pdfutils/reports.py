@@ -40,9 +40,7 @@ class ReportBase(View):
             'STYLES': self.render_styles(),
         })
 
-        if not self.context.get('user'):
-            self.context['user'] = self.request.user
-
+        self.context['user'] = self.request.user
         return self.context
 
     def get_styles(self):
@@ -55,7 +53,7 @@ class ReportBase(View):
     def render_styles(self):
         """
         Eventually this should return a list of <link /> tags
-        instead of inline styles. xhtml2pdf has a weird bug 
+        instead of inline styles. xhtml2pdf has a weird bug
         which prevents external stylesheet from working.
         """
         out = []
