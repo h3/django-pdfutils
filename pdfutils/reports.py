@@ -14,12 +14,12 @@ from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.views.generic import View
+from django.views.generic import TemplateView
 
 from pdfutils.utils import memoize, generate_pdf
 
 
-class ReportBase(View):
+class ReportBase(TemplateView):
     title = u'Untitled report'
     orientation = 'portrait'
     context = {}
@@ -27,6 +27,9 @@ class ReportBase(View):
 
     def filename(self):
         return 'Untitled-document.pdf'
+
+    def get_format(self):
+        return self.request.GET.get('format', 'pdf')
 
     @memoize
     def get_context_data(self):
@@ -90,8 +93,10 @@ class ReportBase(View):
 
         return self.response
 
-    def get(self, request):
-        return self.render()
+    def get(self, request, *args, **kwargs):
+        if self.get_format() == 'pdf':
+            return self.render()
+        return super(ReportBase, self).get(request, *args, **kwargs)
 
 
 class Report(ReportBase):
