@@ -185,7 +185,8 @@ class ReportSite(object):
         # Add in each report's views.
         for model_class, model_instance in six.iteritems(self._registry):
             urlpatterns += patterns('',
-                url(r'^%s/' % model_instance.slug, model_class.as_view())
+                url(r'^%s/' % model_instance.slug, model_class.as_view(), 
+                    name='report__%s' % model_instance.slug)
             )
         return urlpatterns
 
