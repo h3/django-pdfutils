@@ -20,7 +20,7 @@ setup(
         'decorator==3.4.0,<=3.9.9',
         'reportlab==2.5',
         'html5lib==0.90',
-        'httplib2==0.7.4',
+        'httplib2==0.9',
         'pyPdf==1.13',
         'xhtml2pdf==0.0.4',
     ],
