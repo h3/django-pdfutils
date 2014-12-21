@@ -13,6 +13,10 @@ Installation
 4. Create your report(s)
 5. Profit!
 
+**Note**: If you are using buildout, don't forget to put `pdfutils` 
+in your `eggs` section or else the django-pdfutils dependencies wont
+be installed.
+
 
 Example report
 --------------
