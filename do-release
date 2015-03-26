@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# ./do-release 1.0.1
+
+echo "Have you updated changelog?"
+echo "Have you updated README & Docs?"
+read -sn 1 -p "Press any key to continue..."
+echo
+
+# Returns 1 if the current git branch is dirty, else 0
+function git_is_dirty {
+  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo 1 || echo 0
+}
+
+# Returns the number of untracked files
+function git_has_untracked_files {
+  expr `git status --porcelain 2>/dev/null| grep "^??" | wc -l`
+}
+
+function get_next_version {
+    $MAJOR=$1
+    $MINOR=$2
+    $REV=$(expr $3 + 1)
+    echo "$MAJOR.$MINOR.$REV"
+    echo "$MAJOR.$MINOR.$REV"
+}
+
+CURRENT_VERSION=$(grep "version='[0-9].[0-9].[0-9]'" setup.py | grep -o '[0-9].[0-9].[0-9]')
+CV=( ${CURRENT_VERSION//./ } )
+CURRENT_MAJOR=${CV[0]}
+CURRENT_MINOR=${CV[1]}
+CURRENT_REV=${CV[2]}
+
+NEXT_MAJOR=$CURRENT_MAJOR
+NEXT_MINOR=$CURRENT_MINOR
+NEXT_REV=`expr $CURRENT_REV + 1`
+if [ $NEXT_REV -gt 9 ]; then
+    NEXT_MINOR=`expr $NEXT_MINOR + 1`
+    NEXT_REV=0
+    if [ $NEXT_MINOR -gt 9 ]; then
+        NEXT_MINOR=0
+        NEXT_MAJOR=`expr $NEXT_MAJOR + 1`
+    fi
+fi
+NEXT_VERSION="$NEXT_MAJOR.$NEXT_MINOR.$NEXT_REV"
+BRANCH="release_${NEXT_MAJOR}_${NEXT_MINOR}"
+
+# Make sure we are in sync with remote
+git checkout -q master && git fetch -q && git pull -q
+
+# Verify that there is nothing to commit
+if [ $(git_is_dirty) -eq 1 ]; then
+    git status
+    echo
+    echo -e " [error] Hey dumbass, commit your shit.. Abort !\n\n"
+   #exit 1
+fi
+
+# Verify that there is no untracked files
+if [ $(git_has_untracked_files) -gt 0 ]; then
+    git status
+    echo
+    echo -e " [error] I see untracked files, you dirty bastard.. Abort !\n\n"
+    exit 1
+fi
+
+echo " [info] Bumping version"
+sed -i -e "s/    version='"$CURRENT_VERSION"',/    version='"$NEXT_VERSION"',/" setup.py
+git commit -aqm "Version bump: $CURRENT_VERSION -> $NEXT_VERSION"
+git push -q
+
+# check if a git branch exists for the current major release (ex: release_1_0)
+if [ `git branch --list $BRANCH` ]; then # if not, create one.
+    echo " [info] UPDATING release branch $BRANCH"
+    git checkout -q $BRANCH
+    git merge -q origin/master
+else
+    echo " [info] CREATING release branch $BRANCH"
+    git checkout -q -b $BRANCH
+fi
+git push -q --set-upstream origin $BRANCH > /dev/null
+git checkout -q master
+
+echo " [info] Creating tag v$NEXT_VERSION"
+git tag -s "v$NEXT_VERSION" -m "Release $NEXT_VERSION"
+git push --tags origin "v$NEXT_VERSION"
+
+echo " [info] Pushing to PyPi"
+python setup.py sdist upload
+
+echo " [done] Published release v$NEXT_VERSION"
+echo
+exit 0
