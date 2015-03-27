@@ -71,17 +71,16 @@ def generate_pdf_template_object(template_object, file_object, context):
     return file_object
 
 #===============================================================================
-# Main 
+# Main
 #===============================================================================
 
 def generate_pdf(template_name, file_object=None, context=None): # pragma: no cover
     """
     Uses the xhtml2pdf library to render a PDF to the passed file_object, from the
     given template name.
-    
+
     This returns the passed-in file object, filled with the actual PDF data.
     In case the passed in file object is none, it will return a StringIO instance.
-    
     """
     if not file_object:
         file_object = StringIO.StringIO()
