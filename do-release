@@ -88,7 +88,6 @@ git push --tags origin "v$NEXT_VERSION"
 echo " [info] Pushing to PyPi"
 python setup.py sdist build
 python setup.py sdist upload -r PDFutils
-python setup.py bdist_wheel upload -r PDFutils
 
 echo " [done] Published release v$NEXT_VERSION"
 echo
