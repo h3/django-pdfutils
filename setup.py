@@ -10,7 +10,7 @@ def read(*paths):
 
 setup(
     name='PDFutils',
-    version='1.0.5',
+    version='1.0.6',
     description='Django PDFutils',
     long_description=(read('README.rst') + '\n\n' +
                       read('changelog')),
