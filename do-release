@@ -79,6 +79,7 @@ if [ ! -d "./venv" ]; then
 fi
 ./venv/bin/pip install -q gitchangelog
 ./venv/bin/gitchangelog > changelog
+rm -rf venv
 git add changelog
 git commit -qm "Updated changelog @wip"
 git push -q
