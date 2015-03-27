@@ -9,9 +9,10 @@ Installation
 
 1. In your `settings.py`, add `pdfutils` to your `INSTALLED_APPS`.
 2. `(r'^reports/', include(pdfutils.site.urls)),` to your `urls.py`
-3. Create a `report.py` file in any installed django application.
-4. Create your report(s)
-5. Profit!
+3. Add `pdfutils.autodiscover()` to your `urls.py`
+4. Create a `report.py` file in any installed django application.
+5. Create your report(s)
+6. Profit!
 
 **Note**: If you are using buildout, don't forget to put `pdfutils` 
 in your `eggs` section or else the django-pdfutils dependencies wont
