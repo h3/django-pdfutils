@@ -1,0 +1,59 @@
+Changelog
+=========
+
+%%version%% (unreleased)
+------------------------
+
+- Let pisa handle remote resources. [Maxime Haineault]
+
+  https://github.com/dulaccc/django-pdfutils/commit/e92304c2c952a902c6461787aec2cb269595b738
+
+- Add a url name property to the urlpattern generated. [Maxime
+  Haineault]
+
+  https://github.com/dulaccc/django-pdfutils/commit/161c7fc044d21dbaf91c57266f4b408846af8122
+
+- Updated to httplib2 0.9. [Maxime Haineault]
+
+- Messed up version, dammit. [Maxime Haineault]
+
+v1.0.3 (2015-03-27)
+-------------------
+
+- Wheel doesn't build. well.. no wheel. [Maxime Haineault]
+
+v1.0.2 (2015-03-27)
+-------------------
+
+- Updated .gitignore. [Maxime Haineault]
+
+- Updated build script, now building wheel. [Maxime Haineault]
+
+v1.0.1 (2015-03-27)
+-------------------
+
+- Updated .gitignore, almost finished build script, updated setup.py.
+  [Maxime Haineault]
+
+- Added a release script. [Maxime Haineault]
+
+- Merged. [Maxime Haineault]
+
+- Update setup.py. [Maxime Haineault]
+
+- Updated urls for django 1.5+ (unused), updated gitignore. [Maxime
+  Haineault]
+
+- Fixed small bug in get_context. [Maxime Haineault]
+
+- Removed maximum django version restriction, updated gitignore. [Maxime
+  Haineault]
+
+- Removed PIL dependency. [Maxime Haineault]
+
+- Removed django-xhtml2pdf dependency. [Maxime Haineault]
+
+- Removed THUMBNAIL_MEDIA_URL from template variables. [Maxime
+  Haineault]
+
+
