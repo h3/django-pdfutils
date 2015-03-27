@@ -67,6 +67,11 @@ fi
 echo " [info] Bumping version"
 sed -i -e "s/    version='"$CURRENT_VERSION"',/    version='"$NEXT_VERSION"',/" setup.py
 git commit -aqm "Version bump: $CURRENT_VERSION -> $NEXT_VERSION @wip"
+git push -q
+
+echo " [info] Creating tag v$NEXT_VERSION"
+git tag -s "v$NEXT_VERSION" -m "Release $NEXT_VERSION"
+git push --tags origin "v$NEXT_VERSION"
 
 echo " [info] Updating changelog"
 if [ ! -d "./venv" ]; then
@@ -76,7 +81,6 @@ fi
 ./venv/bin/gitchangelog > changelog
 git add changelog
 git commit -qm "Updated changelog @wip"
-
 git push -q
 
 # check if a git branch exists for the current major release (ex: release_1_0)
@@ -90,10 +94,6 @@ else
 fi
 git push -q --set-upstream origin $BRANCH > /dev/null
 git checkout -q master
-
-echo " [info] Creating tag v$NEXT_VERSION"
-git tag -s "v$NEXT_VERSION" -m "Release $NEXT_VERSION"
-git push --tags origin "v$NEXT_VERSION"
 
 echo " [info] Pushing to PyPi"
 python setup.py sdist build upload
