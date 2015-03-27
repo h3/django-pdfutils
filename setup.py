@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='PDFutils',
-    version='1.0.3',
+    version='1.0.1',
     description='Django PDF utils',
     author='Maxime Haineault',
     author_email='max@motion-m.ca',
