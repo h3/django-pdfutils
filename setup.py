@@ -15,13 +15,13 @@ setup(
     long_description=(read('README.rst') + '\n\n' +
                       read('changelog')),
     author='Maxime Haineault',
-    author_email='max@motion-m.ca',
+    author_email='haineault@gmail.com',
+    license='BSD',
     url='https://github.com/h3/django-pdfutils',
-    download_url='',
     packages=find_packages(),
     include_package_data=True,
-#   package_data={'seoutils': [
-#       'templates/*',
+#   package_data={'pdfutils': [
+#       'static/*',
 #       ]},
     install_requires = [
         'django>=1.4',
