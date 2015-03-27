@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from setuptools import setup, find_packages
+
+def read(*paths):
+    with open(os.path.join(*paths), 'r') as f:
+        return f.read()
 
 setup(
     name='PDFutils',
     version='1.0.5',
-    description='Django PDF utils',
+    description='Django PDFutils',
+    long_description=(read('README.rst') + '\n\n' +
+                      read('changelog')),
     author='Maxime Haineault',
     author_email='max@motion-m.ca',
     url='https://github.com/h3/django-pdfutils',
