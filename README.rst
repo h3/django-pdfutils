@@ -125,9 +125,10 @@ Dependencies
 * PIL == 1.1.7
 * reportlab == 2.5
 * html5lib == 0.90
-* httplib2 == 0.7.4
+* httplib2 == 0.9
 * pyPdf == 1.13
 * xhtml2pdf == 0.0.4
 * django-xhtml2pdf == 0.0.3
 
-Note: dependencies are specified in `setup.py`, thus are installed automatically.
+**Note**: dependencies versions are specified in `setup.py`. The amount of time required to find the right
+combination of dependency versions is largely to blame for the creation of this project.
