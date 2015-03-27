@@ -1,8 +1,13 @@
 Changelog
 =========
 
-%%version%% (unreleased)
-------------------------
+v1.0.5 (2015-03-27)
+-------------------
+
+- Fixed build script. [Maxime Haineault]
+
+v1.0.4 (2015-03-27)
+-------------------
 
 - Let pisa handle remote resources. [Maxime Haineault]
 
