@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# ./do-release 1.0.1
-
-echo "Have you updated changelog?"
-echo "Have you updated README & Docs?"
-read -sn 1 -p "Press any key to continue..."
-echo
-
 # Returns 1 if the current git branch is dirty, else 0
 function git_is_dirty {
   [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo 1 || echo 0
@@ -44,6 +37,10 @@ if [ $NEXT_REV -gt 9 ]; then
 fi
 NEXT_VERSION="$NEXT_MAJOR.$NEXT_MINOR.$NEXT_REV"
 BRANCH="release_${NEXT_MAJOR}_${NEXT_MINOR}"
+
+echo "You are about to build and publish version $NEXT_VERSION"
+read -sn 1 -p "Press any key to continue..."
+echo
 
 # Make sure we are in sync with remote
 git checkout -q master && git fetch -q && git pull -q
@@ -84,7 +81,7 @@ git add changelog
 git commit -qm "Updated changelog @wip"
 git push -q
 
-# check if a git branch exists for the current major release (ex: release_1_0)
+# check if a git branch exists for the current major_minor release (ex: release_1_0)
 if [ `git branch --list $BRANCH` ]; then # if not, create one.
     echo " [info] UPDATING release branch $BRANCH"
     git checkout -q $BRANCH
