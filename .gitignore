@@ -4,4 +4,5 @@
 *~
 *.egg-info
 dist
+build
 local_settings.py
