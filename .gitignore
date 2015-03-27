@@ -3,6 +3,7 @@
 *.pyc
 *~
 *.egg-info
+venv
 dist
 build
 local_settings.py
