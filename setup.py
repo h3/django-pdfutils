@@ -6,7 +6,7 @@ setup(
     name='PDFutils',
     version='1.0.0',
     description='Django PDF utils',
-    author='Maxime Haineault (Motion Média)',
+    author='Maxime Haineault',
     author_email='max@motion-m.ca',
     url='https://github.com/h3/django-pdfutils',
     download_url='',

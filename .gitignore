@@ -3,4 +3,5 @@
 *.pyc
 *~
 *.egg-info
+dist
 local_settings.py
