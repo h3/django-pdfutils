@@ -1,29 +1,12 @@
 #-*- coding: utf-8 -*-
 import os
 import StringIO
-from decorator import decorator
 
 from django.conf import settings
 from django.template.context import Context
 from django.template.loader import get_template
 
 from xhtml2pdf import pisa # TODO: Change this when the lib changes.
-
-def _memoize(func, *args, **kw):
-    if kw:  # frozenset is used to ensure hashability
-        key = args, frozenset(kw.iteritems())
-    else:
-        key = args
-    cache = func.cache  # attributed added by memoize
-    if key in cache:
-        return cache[key]
-    else:
-        cache[key] = result = func(*args, **kw)
-        return result
-
-def memoize(f):
-    f.cache = {}
-    return decorator(_memoize, f)
 
 """
 
@@ -33,8 +16,16 @@ https://raw.github.com/chrisglass/django-xhtml2pdf/master/django_xhtml2pdf/utils
 
 """
 
+
 class UnsupportedMediaPathException(Exception):
     pass
+
+
+def unique(seq):
+    seen = set()
+    seen_add = seen.add
+    return [ x for x in seq if not (x in seen or seen_add(x))]
+
 
 def fetch_resources(uri, rel):
     """
@@ -61,6 +52,7 @@ def fetch_resources(uri, rel):
                                 settings.MEDIA_ROOT, settings.STATIC_ROOT))
     return path
 
+
 def generate_pdf_template_object(template_object, file_object, context):
     """
     Inner function to pass template objects directly instead of passing a filename
@@ -70,9 +62,6 @@ def generate_pdf_template_object(template_object, file_object, context):
                    link_callback=fetch_resources)
     return file_object
 
-#===============================================================================
-# Main
-#===============================================================================
 
 def generate_pdf(template_name, file_object=None, context=None): # pragma: no cover
     """

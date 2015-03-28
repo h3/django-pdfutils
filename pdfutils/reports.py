@@ -16,14 +16,16 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 
-from pdfutils.utils import memoize, generate_pdf
+from pdfutils.utils import generate_pdf, unique
 
 
 class ReportBase(TemplateView):
     title = u'Untitled report'
     orientation = 'portrait'
-    context = {}
-    styles = ['pdfutils/css/base.css']
+    styles = []
+
+    def __init__(self):
+        self.styles = ['pdfutils/css/base.css']
 
     def filename(self):
         return 'Untitled-document.pdf'
@@ -31,19 +33,16 @@ class ReportBase(TemplateView):
     def get_format(self):
         return self.request.GET.get('format', 'pdf')
 
-    @memoize
     def get_context_data(self):
-
-        self.context.update({
+        self.context = {
             'title': self.title,
             'slug': self.slug,
+            'user': self.request.user,
             'orientation': self.orientation,
             'MEDIA_URL': settings.MEDIA_URL,
             'STATIC_URL': settings.STATIC_URL,
             'STYLES': self.render_styles(),
-        })
-
-        self.context['user'] = self.request.user
+        }
         return self.context
 
     def get_styles(self):
@@ -51,6 +50,7 @@ class ReportBase(TemplateView):
             self.styles.append('pdfutils/css/portrait.css')
         else:
             self.styles.append('pdfutils/css/landscape.css')
+        self.styles = unique(self.styles)
         return self.styles
 
     def render_styles(self):
