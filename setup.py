@@ -11,8 +11,7 @@ setup(
     name='PDFutils',
     version='1.1.0',
     description='Django PDFutils',
-    long_description=(read('README.rst') + '\n\n' +
-                      read('changelog')),
+    long_description=(read('README.rst')),
     author='Maxime Haineault',
     author_email='haineault@gmail.com',
     license='BSD',
