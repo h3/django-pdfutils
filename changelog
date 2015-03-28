@@ -1,6 +1,44 @@
 Changelog
 =========
 
+v1.0.7 (2015-03-28)
+-------------------
+
+- Merge pull request #3 from dulaccc/format-filter. [Maxime Haineault]
+
+  Add a format filter to simplify debugging
+
+- Add a filter using GET parameters to simplify debugging. [Pierre
+  Dulac]
+
+- Add autodiscover step to the readme file. [Pierre Dulac]
+
+- Merge branch 'dulaccc-add-url-name' [Maxime Haineault]
+
+- Add a url name property to the urlpattern generated. [Maxime
+  Haineault]
+
+- Add a url name property to the urlpattern generated. [Pierre Dulac]
+
+- Merge branch 'dulaccc-fix-resource-remote-url' [Maxime Haineault]
+
+- .. [Maxime Haineault]
+
+- Let pisa handle remote resources. [Pierre Dulac]
+
+- Merge pull request #6 from dominicmontreuil/patch-1. [Maxime
+  Haineault]
+
+  Update setup.py @wip
+
+- Update setup.py. [Dominic Montreuil]
+
+  I needed to use pdfutils along with another package that required httplib2 0.9 or higher.
+
+  I tested pdfutils with httplib2 0.9 and everything works. It should be safe to update to the newer version of httplib2.
+
+- Cleaning up venv after build. [Maxime Haineault]
+
 v1.0.6 (2015-03-27)
 -------------------
 
