@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='PDFutils',
-    version='1.1.0',
+    version='1.1.1',
     description='Django PDFutils',
     long_description=(read('README.rst')),
     author='Maxime Haineault',
