@@ -95,7 +95,7 @@ Example template
                 <li>{{ user }}</li>
                 {% endif %}
             </ul>
-            <a href="{% url 'pdfutils:your_report_slug' %}">your pdf</a>
+            <a href="{% url 'pdfutils:your_report_slug' %}?format=html">Add ?format=html for easy template debug</a>
         </body>
     </html>
 
