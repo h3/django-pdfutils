@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.0.8 (2015-03-28)
+-------------------
+
+- Fixed important memory leak in style loading (thanks Dom) [Maxime
+  Haineault]
+
 v1.0.7 (2015-03-28)
 -------------------
 
