@@ -186,8 +186,7 @@ class ReportSite(object):
         for model_class, model_instance in six.iteritems(self._registry):
             urlpatterns += patterns('',
                 url(r'^%s/' % model_instance.slug, model_class.as_view(), 
-                    name='report-%s' % model_instance.slug)
-            )
+                    name=model_instance.slug))
         return urlpatterns
 
     @property
