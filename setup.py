@@ -19,9 +19,10 @@ setup(
     url='https://github.com/h3/django-pdfutils',
     packages=find_packages(),
     include_package_data=True,
-#   package_data={'pdfutils': [
-#       'static/*',
-#       ]},
+    package_data={'pdfutils': [
+        'README.rst',
+        'changelog',
+        ]},
     install_requires = [
         'django>=1.4',
         'decorator==3.4.0,<=3.9.9',
