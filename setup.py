@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='PDFutils',
-    version='1.0.8',
+    version='1.0.9',
     description='Django PDFutils',
     long_description=(read('README.rst') + '\n\n' +
                       read('changelog')),
