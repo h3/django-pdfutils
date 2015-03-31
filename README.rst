@@ -34,7 +34,6 @@ Reports are basically views with custom methods and properties.
 
     from pdfutils.reports import Report
     from pdfutils.sites import site
-    from pdfutils.utils import memoize
 
 
     class MyUserReport(Report):
@@ -43,13 +42,7 @@ Reports are basically views with custom methods and properties.
         slug = 'users-report'
         orientation = 'portrait'
 
-        @memoize
         def get_users(self):
-            """
-            This method is not necessary, it is used to showcase the
-            memoize decorator which is included in utils. This prevent
-            methods from computing their output twice.
-            """
             return User.objects.filter(is_staff=True)
 
         def get_styles(self):
