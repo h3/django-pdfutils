@@ -58,9 +58,10 @@ def generate_pdf_template_object(template_object, file_object, context):
     Inner function to pass template objects directly instead of passing a filename
     """
     html = template_object.render(Context(context))
-    pisa.CreatePDF(html.encode("UTF-8"), file_object , encoding='UTF-8',
-                   link_callback=fetch_resources)
-    return file_object
+    pisaStatus = pisa.CreatePDF(html.encode("UTF-8"), file_object , encoding='UTF-8')
+    file_object.close()
+    return pisaStatus.err
+    
 
 
 def generate_pdf(template_name, file_object=None, context=None): # pragma: no cover
@@ -76,5 +77,6 @@ def generate_pdf(template_name, file_object=None, context=None): # pragma: no co
     if not context:
         context = {}
     tmpl = get_template(template_name)
-    generate_pdf_template_object(tmpl, file_object, context)
-    return file_object
+    pisaStatus = generate_pdf_template_object(tmpl, file_object, context)
+    file_object.close()
+    return pisaStatus
