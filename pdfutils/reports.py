@@ -22,10 +22,9 @@ from pdfutils.utils import generate_pdf, unique
 class ReportBase(TemplateView):
     title = u'Untitled report'
     orientation = 'portrait'
-    styles = []
 
     def __init__(self):
-        self.styles = ['pdfutils/css/base.css']
+        self.__styles = ['pdfutils/css/base.css']
 
     def filename(self):
         return 'Untitled-document.pdf'
@@ -44,14 +43,20 @@ class ReportBase(TemplateView):
             'STYLES': self.render_styles(),
         }
         return self.context
+        
+    def append_styles(self, styles):
+        self.__styles = []
+        
+        for style in styles:
+            self.__styles.append(style)
 
     def get_styles(self):
         if self.orientation == 'portrait':
-            self.styles.append('pdfutils/css/portrait.css')
+            self.__styles.append('pdfutils/css/portrait.css')
         else:
-            self.styles.append('pdfutils/css/landscape.css')
-        self.styles = unique(self.styles)
-        return self.styles
+            self.__styles.append('pdfutils/css/landscape.css')
+        self.__styles = unique(self.__styles)
+        return self.__styles
 
     def render_styles(self):
         """
