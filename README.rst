@@ -49,7 +49,7 @@ Reports are basically views with custom methods and properties.
             """
             It is possible to add or override style like so
             """
-            self.styles.append('myapp/css/users-report.css')
+            self.add_styles('myapp/css/users-report.css')
             return super(AccountStatementReport, self).get_styles()
 
         def filename(self):

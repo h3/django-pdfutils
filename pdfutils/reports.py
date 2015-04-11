@@ -43,10 +43,10 @@ class ReportBase(TemplateView):
             'STYLES': self.render_styles(),
         }
         return self.context
-        
-    def append_styles(self, styles):
+
+    def add_styles(self, styles):
         self.__styles = []
-        
+
         for style in styles:
             self.__styles.append(style)
 
