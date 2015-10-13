@@ -86,7 +86,7 @@ Example template
             <ul>
                 {% for user in user_list %}
                 <li>{{ user }}</li>
-                {% endif %}
+                {% endfor %}
             </ul>
             <a href="{% url 'pdfutils:your_report_slug' %}?format=html">Add ?format=html for easy template debug</a>
         </body>
