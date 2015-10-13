@@ -29,7 +29,7 @@ setup(
         'html5lib==0.90',
         'httplib2==0.9',
         'pyPdf==1.13',
-        'xhtml2pdf==0.0.4',
+        'xhtml2pdf==0.0.6',
     ],
     zip_safe=False,
     classifiers=[
