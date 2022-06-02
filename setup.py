@@ -26,7 +26,7 @@ setup(
         'django>=1.4',
         'decorator==3.4.0,<=4.0.2',
         'reportlab==2.5',
-        'html5lib==0.90',
+        'html5lib==0.99999999',
         'httplib2==0.9',
         'pyPdf==1.13',
         'xhtml2pdf==0.0.4',
