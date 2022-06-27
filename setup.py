@@ -25,7 +25,7 @@ setup(
     install_requires = [
         'django>=1.4',
         'decorator==3.4.0,<=4.0.2',
-        'reportlab==2.5',
+        'reportlab==3.5.55',
         'html5lib==0.90',
         'httplib2==0.9',
         'pyPdf==1.13',
